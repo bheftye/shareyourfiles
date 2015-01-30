@@ -11,8 +11,9 @@
 	 <div class="main">
 		<div class="login-form">
 			<h1>¡Regístrate!</h1>
-				<form>
+				<form onsubmit="return validateForm()">
 						<input type="text" class="text" placeholder="Usuario" >
+						<input type="text" class="text" placeholder="Email" >
 						<input type="password" placeholder="Contraseña">
 						<input type="password" placeholder="Confirmar contraseña">
 						<div class="submit">
