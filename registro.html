@@ -11,14 +11,16 @@
 	 <div class="main">
 		<div class="login-form">
 			<h1>¡Regístrate!</h1>
-				<form onsubmit="return validateForm()">
-						<input type="text" class="text" placeholder="Usuario" >
-						<input type="text" class="text" placeholder="Email" >
-						<input type="password" placeholder="Contraseña">
-						<input type="password" placeholder="Confirmar contraseña">
+				<form id="form_register" method="post" onsubmit="return validateForm()" action="functions.php">
+						<input name="name" type="text" class="text" placeholder="Nombre completo" >
+						<input name="username" type="text" class="text" placeholder="Usuario" >
+						<input name="email" type="text" class="text" placeholder="Email" >
+						<input name="password_a" type="password" placeholder="Contraseña">
+						<input name="password_b" type="password" placeholder="Confirmar contraseña">
+						<input type="hidden" name="operation" value="ru">
 						<div class="submit">
 							<input type="submit" value="Entrar" >
-					</div>	
+						</div>	
 					<p>¿Ya tienes cuenta?<a href="login.html"> Inicia sesión</a></p>
 				</form>
 			</div>
