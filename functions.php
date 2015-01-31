@@ -16,7 +16,7 @@
 				$user = new user(0, $username, $email, $name, $password);
 
 				$success = $user_controller -> username_taken($user);
-				if($success){
+				if(!$success){
 					$success = $user_controller -> register_user($user);
 					if($success){
 						header("Location: registro.html?success=0");
