@@ -11,9 +11,10 @@
 	 <div class="main">
 		<div class="login-form">
 			<h1>Inicio de sesión</h1>
-				<form>
-						<input type="text" class="text" placeholder="Usuario" >
-						<input type="password" placeholder="Contraseña">
+				<form id="form_login" method="post" onsubmit="return validateLogin()" action="functions.php" >
+						<input name="username" type="text" class="text" placeholder="Usuario / Correo electrónico" >
+						<input name="password" type="password" placeholder="Contraseña">
+						<input name="operation" type="hidden" value="is">
 						<div class="submit">
 							<input type="submit" value="Entrar" >
 					</div>	
