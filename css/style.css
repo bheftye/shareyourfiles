@@ -136,6 +136,7 @@ input[type="submit"]:hover {
 
 div.container{
 	background-image: url("../images/files.png");
+	background-repeat: repeat-y;
 	width: 100%;
 	height: 100%;
 	top: 0;
