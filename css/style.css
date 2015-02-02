@@ -134,7 +134,7 @@ input[type="submit"]:hover {
 	color: #fff;
 }
 
-div.container{
+div.wrapper{
 	background-image: url("../images/files.png");
 	background-repeat: repeat-y;
 	width: 100%;
@@ -144,12 +144,13 @@ div.container{
 
 }
 
-div.content {
+div.container{
     margin-left: auto;
     margin-right: auto;
     width: 60%;
     background-color: #E6E6E6;
-	height:100vh;    
+	height:100vh;   
+	position: relative; 
 }
 
 a.user, a.user :visited{
@@ -182,7 +183,7 @@ a.user :hover{
 
 .menu ul {
   position: relative;
-  z-index: 597;
+  z-index: 2;
   float: right;
   margin-top: 30px;
 }
@@ -195,7 +196,7 @@ a.user :hover{
 .menu ul li.hover,
 .menu ul li:hover {
   position: relative;
-  z-index: 599;
+  z-index: 4;
   cursor: default;
 }
 .menu ul ul {
@@ -204,7 +205,7 @@ a.user :hover{
   position: absolute;
   top: 1px;
   left: 99%;
-  z-index: 598;
+  z-index: 3;
 }
 
 .menu ul ul li {
@@ -252,10 +253,58 @@ a.user :hover{
   background: #f6f6f6;
 }
 
-div.archive{
-	display: block;
-	width: 80%;
-	background-color: #FFFFFF;
-	height: 150px;
+
+.content {
+	position: absolute;
+	top: 10px;
+	left: 220px;
+	bottom: 10px;
+	width: 65%;
+	z-index: 5;
+	height: 100px;
+}
+
+ .archive{
+	position: relative;
+	margin-bottom: 10px;
+	width: 100%;
+	z-index: 5;
+	height: 100px;
+	background: #FFFFFF;
+	font-family: 'Lato', sans-serif;
+	padding:10px;
+}
+
+.label{
+  color: #3dbd99;
+  font-size: 14px;
+
+}
+
+.comment{
+  color: #000000;
+  font-size: 14px;
+
+}
+
+.download{
+	float: right;  
+	-webkit-border-radius: 5;
+  	-moz-border-radius: 5;
+ 	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+  	color: #ffffff;
+  	font-size: 20px;
+  	background: #08995f;
+  	text-decoration: none;
+  	font-size: 14px;
+  	padding: 3px 3px 3px 3px;
+  	border: none;
+
+}
+
+.download:hover{
+	background: #1a7038;
+  text-decoration: none;
 
 }
