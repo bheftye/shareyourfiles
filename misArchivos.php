@@ -29,10 +29,10 @@
 	<div class="wrapper">
 			<div class="container">
 				<div class="menu">
-					<img class="user" src="images/user.png" alt="">
+					<img class="user" src="images/user.png" alt=""><br>
 					<a class="user" href='#'><span><?php echo $user -> username?></span></a>
 				<ul>
-				   <li ><a href='#'><span>Inicio</span></a></li>
+				   <li ><a href='perfil.php?u=<?php echo $user -> username?>'><span>Inicio</span></a></li>
 				   <li class='active'><a href='#'><span>Mis archivos</span></a></li>
 				</ul>
 				</div>

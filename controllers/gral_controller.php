@@ -27,7 +27,7 @@
 				$email = $row["email"];
 				$nombre = $row["name"];
 				$contrasena = "";
-				return $usuario = new user($db_id, $usuario, , $email, $name, $contrasena);
+				return $usuario = new user($db_id, $usuario, $email, $name, $contrasena);
 		}		//$id_user, $username, $email, $name, $password
 
 
@@ -37,15 +37,15 @@
 			$email = "";
 			$nombre = $row["name"];
 			$contrasena = "";
-			return $usuario = new user($db_id, $usuario, , $email, $name, $contrasena);
+			return $usuario = new user($db_id, $usuario, $email, $name, $contrasena);
 		}		//$id_user, $username, $email, $name, $password
 
-		private function getUsersFriends($idUser){
+		public function getUsersFriends($idUser){
 			$db_connection = new connection();
 			$query = "SELECT users.id_user, username, name from (select id_user from friends where id_friend = ".$idUser." union select id_friend from friends where id_user= ".$idUser.") AS friendsTb join users on friendsTb.id_user = users.id_user";
 			$results = $db_connection -> execute_query($query);
 			$friends = array();
-			while($row = mysqli_fetch_array($resultados)){
+			while($row = mysqli_fetch_array($results)){
 				$friend = $this -> fillFriend($row);
 				array_push($friends, $friend);
 			}

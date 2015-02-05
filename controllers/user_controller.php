@@ -86,8 +86,6 @@
 			}	
 			return false;
 		}
-<<<<<<< HEAD
-
 		function list_user_uploads($username){
 			$db_connection = new connection();
 			$user_uploads = array();
@@ -100,9 +98,5 @@
 			}	
 			return $user_uploads;
 		}
-=======
-	
-
->>>>>>> FETCH_HEAD
 	}
 ?>
