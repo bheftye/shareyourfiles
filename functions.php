@@ -21,7 +21,7 @@
 				if(!$success){
 					$success = $user_controller -> register_user($user);
 					if($success){
-						header("Location: login.html?success=0");// se registro el usuario con exito;
+						header("Location: perfil.php?success=0");// se registro el usuario con exito;
 					}
 					else{
 						header("Location: registro.html?success=1");//no se registro el usuario;
@@ -48,6 +48,7 @@
 				$success = $user_controller -> iniciar_sesion($user);
 
 				if($success){
+					header("Location: perfil.php?success=1");//Inicio de sesión con éxito.
 					header("Location: perfil.php?u=".$user -> username);//Inicio de sesión con éxito.
 				}
 				else{
