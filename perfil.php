@@ -13,7 +13,10 @@ $username = $_SESSION["username_shayourfiles"];
 $name = $_SESSION["name_shareyourfiles"];
 $idUser = $_SESSION["id_user_shareyourfiles"];
 $email = $_SESSION["email_shareyourfiles"];
-  }
+ }
+ else{
+ 	header("Location: login.html");
+ }
     $friends = array();
     $ctrlGral = new gral_controller();
     $friends = $ctrlGral -> getUsersFriends($idUser);
@@ -25,11 +28,11 @@ $email = $_SESSION["email_shareyourfiles"];
 		$user = $user_controller -> get_user_by_username($username);
 
 		if(is_null($user)){
-			header("Location: error_user.html");
+			header("Location: login.html");
 		}
 	}
 	else{
-		header("Location: error_user.html");
+		header("Location: login.html");
 	}
 	
 ?>

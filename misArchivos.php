@@ -10,11 +10,14 @@
 		$user = $user_controller -> get_user_by_username($username);
 		$user_uploads = $user_controller -> list_user_uploads($username);
 		if(is_null($user)){
-			header("Location: error_user.html");
+			header("Location: login.html");
 		}
 	}
 	else{
-		header("Location: error_user.html");
+		header("Location: login.html");
+	}
+	if(!isset($_SESSION["id_user_shareyourfiles"])){
+		header("Location: login.html");
 	}
 	
 ?>

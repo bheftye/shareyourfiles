@@ -10,6 +10,9 @@
     $username = $_SESSION["username_shayourfiles"];
     $idUser = $_SESSION["id_user_shareyourfiles"];
   }
+  else{
+  	header("Location: login.html");
+  }
 
   $found_users = array();
 
@@ -30,11 +33,11 @@
 		$user_controller = new user_controller();
 		$user = $user_controller -> get_user_by_username($username);
 		if(is_null($user)){
-			header("Location: error_user.html");
+			header("Location: login.html");
 		}
 	}
 	else{
-		header("Location: error_user.html");
+		header("Location: login.html");
 	}
 	
 ?>
