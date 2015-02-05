@@ -2,6 +2,7 @@
 include_once("controllers/user_controller.php");
 include_once("controllers/gral_controller.php");
 include_once("./model/user.php");
+include_once("./model/file_upload.php");
 
 $username = "";
 $idUser = "";
@@ -85,6 +86,29 @@ $email = $_SESSION["email_shareyourfiles"];
 						 	<?php foreach ($friends as $friend) {
 						 		echo '<p>'.$friend -> username.'</p><br>';
 						 	}?>
+ 							
+					</div>		
+					<div class="friendsBox">
+						 	<h1>Publicaciones Amigos</h1><br>
+						 	<?php 
+						 	$all_uploads = array();
+						 	foreach ($friends as $friend) {
+						 		$user_uploads = $user_controller -> list_user_uploads($friend -> username);
+						 		foreach ($user_uploads as $upload) {
+						 			array_push($all_uploads, $upload);
+						 		}
+						 	}
+						 	shuffle($all_uploads);
+					 		foreach ($all_uploads as $user_upload) {
+								echo '<div class="archive">
+										<p class="label">'.$user_upload -> username.'</p>
+										<p class="label">'.$user_upload -> file_name.'</p>
+										<p class="label">Comentario</p>
+										<p class="comment">'.$user_upload -> description.'</p>
+										<a href="download.php?f='.$user_upload -> file_name.'"><button class= "download">Descargar</button></a>
+									</div>';
+							}
+						 	?>
  							
 					</div>		
 		</div>

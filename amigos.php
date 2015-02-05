@@ -53,7 +53,7 @@
 					<br>
 					<a class="user" href='#'><span><?php echo $user -> username?></span></a>
 				<ul>
-				   <li><a href='#'><span>Inicio</span></a></li>
+				  <li ><a href='perfil.php?u=<?php echo $user -> username?>'><span>Inicio</span></a></li>
 				   <li><a href='misArchivos.php?u=<?php echo $user -> username;?>'><span>Mis archivos</span></a></li>
 				   <li class='active'><a href='amigos.php?u=<?php echo $user -> username;?>'><span>Amigos</span></a></li>
 
