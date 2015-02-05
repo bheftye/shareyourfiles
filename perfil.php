@@ -9,7 +9,9 @@ $name="";
 session_start();
 if(isset($_SESSION["id_user_shareyourfiles"])){
 $username = $_SESSION["username_shayourfiles"];
-    $idUser = $_SESSION["id_user_shareyourfiles"];
+$name= $_SESSION["name_shareyourfiles"];
+$idUser = $_SESSION["id_user_shareyourfiles"];
+$email = $_SESSION["email_shareyourfiles"];
   }
     $friends = array();
     $ctrlGral = new gral_controller();
@@ -63,8 +65,8 @@ $username = $_SESSION["username_shayourfiles"];
 
 							<input type="submit" value="Editar info">
 						</form> 
-						<!--<form action="#">
-							<input type="submit" value="Cambiar contraseña">
+						<form action="#">
+							<!--<input type="submit" value="Cambiar contraseña">-->
 						</form>
 					</div>
 					<div class="friendsBox">
@@ -79,7 +81,7 @@ $username = $_SESSION["username_shayourfiles"];
 							<input type="submit" value="Guardar">
 						</form> 
 					</div>
-					<!--<div class="friendsBox">
+					<div class="friendsBox">
 						<h1>Buscar amigos</h1><br>
 						<form action="#" method="post" action="functions.php">
 						 	<input type="text" name="friendName">
@@ -88,7 +90,7 @@ $username = $_SESSION["username_shayourfiles"];
 							<p> <?php //echo $_POST["friendName"]; ?></p> 
 
 
-					</div>	-->				
+					</div>				
 		</div>
 	</div>
 </body>

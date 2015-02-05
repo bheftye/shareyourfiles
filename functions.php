@@ -135,7 +135,7 @@
 
 				$sucess = $user_controller -> update_user_info($user);
 				if($sucess){
-					header("Location: perfil.php?");
+					header("Location: perfil.php?u=".$user -> username);
 				}else{
 					//header("Location: perfil.php?success=2");
 					echo 'No se pudo actualizar la información';
@@ -167,7 +167,7 @@
 
 					$success = $user_controller -> update_password($user);
 					if($success){
-					header("Location: perfil.php?");
+					header("Location: perfil.php?u=".$user -> username);
 				}else{
 					//header("Location: perfil.php?success=2");
 					echo 'No se pudo actualizar la información';
