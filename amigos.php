@@ -10,6 +10,15 @@
     $username = $_SESSION["username_shayourfiles"];
     $idUser = $_SESSION["id_user_shareyourfiles"];
   }
+
+  $found_users = array();
+
+  if(isset($_GET["search_string"])){
+  	$search_string = $_GET["search_string"];
+  	$user_controller = new user_controller();
+  	$found_users = $user_controller -> list_users_found($search_string);
+  }
+
     $friends = array();
     $ctrlGral = new gral_controller();
     $friends = $ctrlGral -> getUsersFriends($idUser);
@@ -44,30 +53,31 @@
 					<br>
 					<a class="user" href='#'><span><?php echo $user -> username?></span></a>
 				<ul>
-				   <li class='active'><a href='#'><span>Inicio</span></a></li>
+				   <li><a href='#'><span>Inicio</span></a></li>
 				   <li><a href='misArchivos.php?u=<?php echo $user -> username;?>'><span>Mis archivos</span></a></li>
-				   <li><a href='amigos.php?u=<?php echo $user -> username;?>'><span>Amigos</span></a></li>
+				   <li class='active'><a href='amigos.php?u=<?php echo $user -> username;?>'><span>Amigos</span></a></li>
 
 				</ul>
 				</div>
 				<div class="content">	
 					<div class="friendsBox">
-						<h1>Buscar amigos</h1><br>
-						<form action="#" method="post" action="functions.php">
-						 	<input type="text" name="friendName">
-							<input type="submit" name="searchFriends" value="Buscar">
-						</form>
-							<p> <?php //echo $_POST["friendName"]; ?></p> 
-					</div>	
+						 	<h1>Amigos</h1><br>
+						 	<?php foreach ($friends as $friend) {
+						 		echo '<p>'.$friend -> username.'</p><br>';
+						 	}?>
+ 							
+					</div>
 					<div class="friendsBox">
-						<h1>Amigos</h1>
-						    <?php// foreach ($friends as $friend) {
-        						//echo  "<p> ".$friend->getUsername()."</p>";
-      						//}?>
-						<p> Nombre completo del amigo <input type="button" value="Agregar" /></p>
-						<p> Nombre completo del amigo <input type="button" value="Agregar" /></p>
-
-					</div>			
+						<h1>Buscar usuarios</h1><br>
+						<form method="get" action="amigos.php">
+						 	<input type="text" name="search_string">
+						 	<input type="hidden" name="u" value="<?php echo $user -> username?>">
+							<input type="submit" value="Buscar">
+						</form>
+						<?php foreach ($found_users as $found_user) {
+						 		echo '<p>'.$found_user -> username.'</p><br>';
+						 }?>
+					</div>		
 				</div>
 	</div>
 </body>

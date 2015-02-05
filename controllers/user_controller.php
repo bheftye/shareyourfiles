@@ -104,21 +104,8 @@
 			//UPDATE users SET username='karimy', email = 'kchable@gmail.com', name ='Karimy Chable' where id_user ="1"
 			//', password ='".md5($user -> password)."
 			$result = $db_connection -> execute_query($query);
-			if(mysqli_num_rows($result) >= 0){
-				if(!isset($_SESSION["id_user_shareyourfiles"])) 
-			    { 
-			        session_start(); 
-			    } else{
-			    	if(isset($_SESSION["id_user_shareyourfiles"])){
-						$_SESSION["username_shayourfiles"] = $user->username;
-						$name = $_SESSION["name_shareyourfiles"] = $user -> name;
-						$email= $_SESSION["email_shareyourfiles"] = $user -> email;
-					}
-
-			    }
-
-
-				return true;
+			if($result){
+				return $this -> iniciar_sesion($user);
 			}
 
 			return false;
@@ -148,6 +135,20 @@
 
 			}	
 			return $db_password;		
+		}
+
+		function list_users_found($search_string){
+			$db_connection = new connection();
+			$query = "SELECT * FROM users WHERE username LIKE '%".$search_string."%'";
+			$users = array();
+			$result = $db_connection -> execute_query($query);
+			if(mysqli_num_rows($result) > 0){
+				while($row = mysqli_fetch_array($result)){
+					$user = new user($row["id_user"], $row["username"], $row["email"], $row["name"], "");
+					array_push($users, $user);
+				}
+			}	
+			return $users;
 		}
 
 			
