@@ -1,7 +1,10 @@
 <?php
 	include_once("./controllers/user_controller.php");
 	include_once("./model/user.php");
+	include_once("./model/file_upload.php");
 
+
+	$operation = $_POST["operation"];
 
 	if(isset($_REQUEST["operation2"])){
 		$operation2 = $_REQUEST["operation2"];
@@ -77,6 +80,43 @@
 			else{
 				header("Location: login.html?success=1");//No se pudo iniciar sesión
 			}
+			break;
+		case 'sa'://registrar usuario;
+			$file_name = (isset($_FILES["file"]["name"]))? $_FILES["file"]["name"] : "Uknown";
+			$description = (isset($_POST["description"]))? $_POST["description"] : "Uknown";
+			session_start();
+			$username = $_SESSION["username_shayourfiles"];
+
+
+			$ext = pathinfo($file_name, PATHINFO_EXTENSION);
+			$file_new_name = uniqid().".".$ext;
+			$file_name_tmp = $_FILES["file"]["tmp_name"];
+
+			$user_controller = new user_controller();
+			$file_upload = new file_upload(0, $username, $description, $file_new_name);
+
+			
+
+			if($file_name_tmp != ""){
+				$success = $user_controller -> upload_user_file($file_new_name, $file_name_tmp);
+				if($success){
+					$success = $user_controller -> save_upload($file_upload);
+					if($success){
+						header("Location: perfil.php?u=".$username);//Inicio de sesión con éxito.
+					}
+					else{
+						header("Location: misArchivos.php?success=2");
+					}	
+				}
+				else{
+					header("Location: misArchivos.php?success=1");
+				}
+			}
+			else{
+				header("Location: misArchivos.php?success=1");
+			}
+
+			
 			break;
 		
 		

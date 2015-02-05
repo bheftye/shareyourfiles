@@ -20,14 +20,9 @@
 			$this -> password = $password;
 		}
 
-		function user2($id_user, $username, $email, $name)
-		{
-			$this -> id_user = $id_user;
-			$this -> username = $username;
-			$this -> email = $email;
-			$this -> name = $name;
+
+		function getUsername(){
+			return $this->username;
 		}
-
-
 	}
 ?>

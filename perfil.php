@@ -1,17 +1,35 @@
 <?php
 include_once("controllers/user_controller.php");
-$username = "";
+  include_once("controllers/gral_controller.php");
+  include_once("./model/user.php");
+
+  $username = "";
+  $idUser = "";
 $name="";
 session_start();
 if(isset($_SESSION["id_user_shareyourfiles"])){
 $username = $_SESSION["username_shayourfiles"];
-$name = $_SESSION["name_shareyourfiles"];
-$email= $_SESSION["email_shareyourfiles"];
+    $idUser = $_SESSION["id_user_shareyourfiles"];
+  }
+    $friends = array();
+    $ctrlGral = new gral_controller();
+    $friends = $ctrlGral -> getUsersFriends($idUser);
+	
 
-}
-
+	$username = (isset($_GET["u"]))? $_GET["u"]: "Unknown";
+	if($username != "Unknown"){
+		$username = addslashes($username);
+		$user_controller = new user_controller();
+		$user = $user_controller -> get_user_by_username($username);
+		if(is_null($user)){
+			header("Location: error_user.html");
+		}
+	}
+	else{
+		header("Location: error_user.html");
+	}
+	
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,13 +42,11 @@ $email= $_SESSION["email_shareyourfiles"];
 			<div class="container">
 				<div class="menu">
 					<img class="user" src="images/user.png" alt="">
-					<?php if(isset($_SESSION["username_shayourfiles"])) echo '<a class="user" href="perfil.php"><span>'.$username.'</span></a>'; else header("Location: login.html?success=0")?></a>
-
+					<br>
+					<a class="user" href='#'><span><?php echo $user -> username?></span></a>
 				<ul>
 				   <li class='active'><a href='#'><span>Inicio</span></a></li>
-				   <li><a href='#'><span>Mis archivos</span></a></li>
-				   <li><a href='functions.php?operation2=cs'><span>Cerrar sesión</span></a></li>
-
+				   <li><a href='misArchivos.php?u=<?php echo $user -> username;?>'><span>Mis archivos</span></a></li>
 				</ul>
 				</div>
 				<div class="content">	
@@ -48,8 +64,6 @@ $email= $_SESSION["email_shareyourfiles"];
 						<!--<form action="#">
 							<input type="submit" value="Cambiar contraseña">
 						</form>
-						</form>-->
-
 					</div>
 					<div class="friendsBox">
 						 <form id="form_update" method="post"  action="functions.php">
@@ -62,16 +76,17 @@ $email= $_SESSION["email_shareyourfiles"];
 
 							<input type="submit" value="Guardar">
 						</form> 
-					</div>	
-					<div class="friendsBox">
-						<h1>Amigos</h1>
-						<p> Nombre completo del amigo</p>
-						<p> Nombre completo del amigo</p>
-						<p> Nombre completo del amigo</p>
-						<p> Nombre completo del amigo</p>
+					</div>
+					<!--<div class="friendsBox">
+						<h1>Buscar amigos</h1><br>
+						<form action="#" method="post" action="functions.php">
+						 	<input type="text" name="friendName">
+							<input type="submit" name="searchFriends" value="Buscar">
+						</form>
+							<p> <?php //echo $_POST["friendName"]; ?></p> 
 
-					</div>			
-				</div>
+
+					</div>	-->				
 		</div>
 	</div>
 </body>
