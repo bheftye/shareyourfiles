@@ -52,34 +52,23 @@
 				</div>
 				<div class="content">	
 					<div class="friendsBox">
-						 <form action="#">
-						 	<h1>Datos personales</h1><br>
- 							<label>Nombre:</label> <input type="text" name="name" value="<?php echo $user -> name?>" disabled><br>
-  							<label>Usuario:</label> <input type="text" name="username" value="<?php echo $user -> username?>" disabled><br>
-  							<label>E-mail:</label> <input type="text" value="<?php echo $user -> email?>" name="email" disabled><br>
-							<!--<input type="submit" value="Guardar">-->
-						</form> 
-					</div>	
-					<div class="friendsBox">
-						 <form action="#">
-						 	<h1>Cambiar contraseña</h1><br>
-						 	<label>Contraseña actual:</label> <input type="password" name="actualPass"><br>
-  							<label>Nueva contraseña:</label> <input type="text" name="newPass"><br>
-  							<label>Confirmar contraseña:</label> <input type="text" name="confPass"><br>
-							<input type="submit" value="Guardar">
-						</form> 
-					</div>
-					<!--<div class="friendsBox">
 						<h1>Buscar amigos</h1><br>
 						<form action="#" method="post" action="functions.php">
 						 	<input type="text" name="friendName">
 							<input type="submit" name="searchFriends" value="Buscar">
 						</form>
 							<p> <?php //echo $_POST["friendName"]; ?></p> 
+					</div>	
+					<div class="friendsBox">
+						<h1>Amigos</h1>
+						    <?php// foreach ($friends as $friend) {
+        						//echo  "<p> ".$friend->getUsername()."</p>";
+      						//}?>
+						<p> Nombre completo del amigo <input type="button" value="Agregar" /></p>
+						<p> Nombre completo del amigo <input type="button" value="Agregar" /></p>
 
-
-					</div>	-->				
-		</div>
+					</div>			
+				</div>
 	</div>
 </body>
 </html>

@@ -34,6 +34,8 @@
 				<ul>
 				   <li ><a href='perfil.php?u=<?php echo $user -> username?>'><span>Inicio</span></a></li>
 				   <li class='active'><a href='#'><span>Mis archivos</span></a></li>
+				    <li><a href='amigos.php?u=<?php echo $user -> username;?>'><span>Amigos</span></a></li>
+
 				</ul>
 				</div>
 				<div class="content">	
