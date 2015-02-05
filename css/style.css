@@ -295,7 +295,7 @@ a.user :hover{
 
 }
 
-.download, .archive input[type="submit"], .friendsBox input[type="submit"], div.upload{
+.download, .archive input[type="submit"], .friendsBox input[type="submit"], div.upload {
 	float: right;  
 	-webkit-border-radius: 5;
   	-moz-border-radius: 5;
@@ -314,7 +314,23 @@ a.user :hover{
   	margin-top: 2px;
 }
 
-.download:hover, .archive input[type="submit"]:hover,, .friendsBox input[type="submit"]:hover, div.upload:hover{
+.friendsBox input[type="button"]{
+	-webkit-border-radius: 5;
+  	-moz-border-radius: 5;
+ 	border-radius: 5px;
+	font-family: 'Lato', sans-serif;
+  	color: #ffffff;
+  	font-size: 20px;
+  	background: #08995f;
+  	font-size: 14px;
+  	border: none;
+  	overflow: hidden;
+  	cursor: pointer;
+  	float: right;
+
+}
+
+.download:hover, .archive input[type="submit"]:hover, .friendsBox input[type="submit"]:hover, div.upload:hover, .friendsBox input[type="button"]:hover{
 	background: #1a7038;
   text-decoration: none;
 
