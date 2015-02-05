@@ -1,4 +1,8 @@
 <?php
+	
+	if(!isset($_SESSION["id_user_shareyourfiles"])){
+		header("Location: login.html");
+	}
 	if(isset($_GET["f"])){
 		$file_name = $_GET["f"];
 		if(is_file("./user_files/".$file_name)){
