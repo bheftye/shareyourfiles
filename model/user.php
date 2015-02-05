@@ -19,5 +19,10 @@
 			$this -> name = $name;
 			$this -> password = $password;
 		}
+
+
+		function getUsername(){
+			return $this->username;
+		}
 	}
 ?>
