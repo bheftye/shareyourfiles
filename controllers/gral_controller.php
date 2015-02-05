@@ -27,7 +27,7 @@
 				$email = $row["email"];
 				$nombre = $row["name"];
 				$contrasena = "";
-				return $usuario = new user($db_id, $usuario, $email, $name, $contrasena);
+				return $usuario = new user($db_id, $usuario, $email, $nombre, $contrasena);
 		}		//$id_user, $username, $email, $name, $password
 
 
@@ -37,7 +37,7 @@
 			$email = "";
 			$nombre = $row["name"];
 			$contrasena = "";
-			return $usuario = new user($db_id, $usuario, $email, $name, $contrasena);
+			return $usuario = new user($db_id, $usuario, $email, $nombre, $contrasena);
 		}		//$id_user, $username, $email, $name, $password
 
 		public function getUsersFriends($idUser){

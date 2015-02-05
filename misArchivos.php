@@ -38,7 +38,7 @@
 
 				</ul>
 				</div>
-				<div class="content">	
+				<div class="content">
 					<div class="archive">
 						<form action="functions.php" method="post" enctype="multipart/form-data">
 							<label>Comentario (120 caract)</label><br>

@@ -128,12 +128,12 @@
 			$db_connection = new connection();
 			$query="UPDATE users SET password='".md5($user -> password)."' WHERE id_user = '".$user -> id_user."'";
 			//UPDATE users SET password=md5('pass') where id_user = '1'
-		$result = $db_connection -> execute_query($query);
-		if(mysqli_num_rows($result) >= 0){
+			$result = $db_connection -> execute_query($query);
+			if(mysqli_num_rows($result) >= 0){
 
-			return true;
-		}
-		return false;
+				return true;
+			}
+			return false;
 		}//Aqui termina update_password
 
 		function get_password($id_user){
