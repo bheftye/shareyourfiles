@@ -71,7 +71,8 @@
 				$success = $user_controller -> iniciar_sesion($user);
 
 				if($success){
-					header("Location: perfil.php?success=1");//Inicio de sesión con éxito.
+					header("Location: perfil.php?u=".$user -> username);//Inicio de sesión con éxito.
+
 				}
 				else{
 					header("Location: login.html?success=2");//Usuario, email o contraseña incorrectos
