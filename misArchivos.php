@@ -33,9 +33,9 @@
 			<div class="container">
 				<div class="menu">
 					<img class="user" src="images/user.png" alt=""><br>
-					<a class="user" href='#'><span><?php echo $user -> username?></span></a>
+					<a class="user" href='perfil.php?u=<?php echo $user -> username?>'><span><?php echo $user -> username?></span></a>
 				<ul>
-				   <li ><a href='perfil.php?u=<?php echo $user -> username?>'><span>Inicio</span></a></li>
+				   <li ><a href='inicio.php?u=<?php echo $user -> username?>'><span>Inicio</span></a></li>
 				   <li class='active'><a href='#'><span>Mis archivos</span></a></li>
 				    <li><a href='amigos.php?u=<?php echo $user -> username;?>'><span>Amigos</span></a></li>
 

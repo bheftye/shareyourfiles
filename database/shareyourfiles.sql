@@ -1,117 +1,59 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7
+-- version 4.2.10
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 01-02-2015 a las 00:00:41
--- Versión del servidor: 5.5.41-log
--- Versión de PHP: 5.6.3
+-- Host: localhost
+-- Generation Time: Feb 05, 2015 at 04:54 AM
+-- Server version: 5.5.38
+-- PHP Version: 5.6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Base de datos: `shareyourfiles`
+-- Database: `shareyourfiles`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `friends`
+-- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `friends` (
-  `id_user` int(255) NOT NULL,
-  `id_friend` int(255) NOT NULL,
-  `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `posts`
---
-
-CREATE TABLE IF NOT EXISTS `posts` (
-`id_post` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `content` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `filepath` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+CREATE TABLE `users` (
+`id_user` int(11) NOT NULL,
+  `username` text COLLATE utf8_unicode_ci NOT NULL,
+  `password` text COLLATE utf8_unicode_ci NOT NULL,
+  `name` text COLLATE utf8_unicode_ci NOT NULL,
+  `email` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Estructura de tabla para la tabla `users`
+-- Dumping data for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`id_user` int(100) NOT NULL,
-  `username` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `name` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+INSERT INTO `users` (`id_user`, `username`, `password`, `name`, `email`) VALUES
+(1, 'bheftye', 'f119eba430fdec0ce91cf4f310bcfafc', 'Brent Heftye', 'bheftye92@gmail.com'),
+(2, 'genny', 'e10adc3949ba59abbe56e057f20f883e', 'Genny Andrea Centeno Metri', 'genny@gmail.com'),
+(3, 'karimy', 'e10adc3949ba59abbe56e057f20f883e', 'karimy', 'karimy@gmail.com'),
+(4, 'usuario123', '834d1cb63a03acfe3d4ec81e290258b3', 'Usuario Prueba', 'usuarioprueba@gmail.com');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `friends`
---
-ALTER TABLE `friends`
- ADD KEY `id_user` (`id_user`,`id_friend`), ADD KEY `id_friend` (`id_friend`);
-
---
--- Indices de la tabla `posts`
---
-ALTER TABLE `posts`
- ADD PRIMARY KEY (`id_post`), ADD KEY `id_user` (`id_user`);
-
---
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
  ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `posts`
---
-ALTER TABLE `posts`
-MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id_user` int(100) NOT NULL AUTO_INCREMENT;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `friends`
---
-ALTER TABLE `friends`
-ADD CONSTRAINT `id_friend_pk` FOREIGN KEY (`id_friend`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `id_user_pk` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `posts`
---
-ALTER TABLE `posts`
-ADD CONSTRAINT `id_user_pk_posts` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
