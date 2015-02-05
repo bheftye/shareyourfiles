@@ -59,6 +59,23 @@
 				header("Location: registro.html?success=1");
 			}
 			break;
+		case "af"://add friend
+			$new_friend = (isset($_POST["new_friend"]))? $_POST["new_friend"] : "Uknown";
+			$user = (isset($_POST["user"]))? $_POST["user"] : "Uknown";
+			if($new_friend != "Uknown" && $user != "Uknown"){
+				$user_controller = new user_controller();
+				$success = $user_controller -> add_friend($new_friend, $user);
+				if($success){
+					header("Location: perfil.php?u=".$user);//Inicio de sesión con éxito.
+				}
+				else{
+					header("Location: ".$_SERVER['HTTP_REFERER']);
+				}
+			}	
+			else{
+
+			}
+		break;
 		case 'is': //inicia sesión
 			session_start();
 			$username = (isset($_POST["username"]))? $_POST["username"] : "Uknown";

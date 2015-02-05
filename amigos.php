@@ -75,7 +75,24 @@
 							<input type="submit" value="Buscar">
 						</form>
 						<?php foreach ($found_users as $found_user) {
-						 		echo '<p>'.$found_user -> username.'</p><br>';
+								$is_friend = false;
+								foreach ($friends as $friend) {
+									if($friend -> username == $found_user -> username || $found_user -> username == $_SESSION["username_shayourfiles"]){
+										$is_friend = true;
+										break;
+									}
+								}
+								if($is_friend){
+									echo '<p>'.$found_user -> username.'</p><br>';
+								}
+								else{
+									echo '<form method="post" action="functions.php">
+											<input type="hidden" name="new_friend" value="'.$found_user -> username.'">
+											<input type="hidden" name="user" value="'.$_SESSION["username_shayourfiles"].'">
+											<input type="hidden" name="operation" value="af">
+											<p>'.$found_user -> username.'<input type="submit" value="Agregar"></p><br>';
+
+								}
 						 }?>
 					</div>		
 				</div>

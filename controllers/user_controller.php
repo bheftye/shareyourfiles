@@ -151,6 +151,19 @@
 			return $users;
 		}
 
+		function add_friend($new_friend, $user){
+			$user_friend = $this -> get_user_by_username($new_friend);
+			$user_user = $this -> get_user_by_username($user);
+
+			$db_connection = new connection();
+			$query = "INSERT INTO `friends`(`id_user`, `id_friend`, `status`) VALUES (".$user_friend -> id_user.",".$user_user -> id_user.",1)";
+			$id_friends = $db_connection -> insert_query($query);
+			if($id_friends > 0){
+				return true;
+			}	
+			return false;
+		}
+
 			
 		//SELECT password from users where id_user = '3'
 
