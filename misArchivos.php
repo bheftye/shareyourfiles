@@ -1,12 +1,14 @@
 <?php
 	include_once("./controllers/user_controller.php");
 	include_once("./model/user.php");
+	include_once("./model/file_upload.php");
 
 	$username = (isset($_GET["u"]))? $_GET["u"]: "Unknown";
 	if($username != "Unknown"){
 		$username = addslashes($username);
 		$user_controller = new user_controller();
 		$user = $user_controller -> get_user_by_username($username);
+		$user_uploads = $user_controller -> list_user_uploads($username);
 		if(is_null($user)){
 			header("Location: error_user.html");
 		}
@@ -28,7 +30,7 @@
 			<div class="container">
 				<div class="menu">
 					<img class="user" src="images/user.png" alt="">
-					<a class="user" href='#'><span>fulanitopp</span></a>
+					<a class="user" href='#'><span><?php echo $user -> username?></span></a>
 				<ul>
 				   <li ><a href='#'><span>Inicio</span></a></li>
 				   <li class='active'><a href='#'><span>Mis archivos</span></a></li>
@@ -48,17 +50,15 @@
       					</form>
 					</div>
 					<?php 
-						/*foreach ($archivos as $archivo) {
+						foreach ($user_uploads as $user_upload) {
 							echo '<div class="archive">
-									<p class="label">Nombre de usuario</p>
-									<p class="label">Archivo</p>
+									<p class="label">'.$user_upload -> username.'</p>
+									<p class="label">'.$user_upload -> file_name.'</p>
 									<p class="label">Comentario</p>
-									<p class="comment">bla bla bla</p>
-									<form action="#">
-										<button class= "download">Descargar</button>
-									</form>
+									<p class="comment">'.$user_upload -> description.'</p>
+									<a href="download.php?f='.$user_upload -> file_name.'"><button class= "download">Descargar</button></a>
 								</div>';
-						}*/
+						}
 					?>
 										
 				</div>

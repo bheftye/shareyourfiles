@@ -86,5 +86,18 @@
 			}	
 			return false;
 		}
+
+		function list_user_uploads($username){
+			$db_connection = new connection();
+			$user_uploads = array();
+			$query = "SELECT * FROM file_uploads WHERE username = '".$username."'";
+			$result = $db_connection -> execute_query($query);
+			if(mysqli_num_rows($result) > 0){
+				while($row = mysqli_fetch_array($result)){
+					$file_upload = new file_upload($row["id_upload"], $row["username"], $row["description"], $row["file_name"]);
+					array_push($user_uploads, $file_upload);				}
+			}	
+			return $user_uploads;
+		}
 	}
 ?>
